@@ -1,16 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ProductDTO;
-import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
-import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,6 +58,6 @@ public class ProductController {
     @GetMapping
     public List<ProductDTO> getProducts(){
         List<ProductDTO> productDTOS = productService.getProducts();
-        return productDTOS.stream().sorted(Comparator.comparingInt(ProductDTO::getPrice)).collect(Collectors.toList());
+        return productDTOS.stream().sorted(Comparator.comparingDouble(ProductDTO::getPrice)).collect(Collectors.toList());
     }
 }
