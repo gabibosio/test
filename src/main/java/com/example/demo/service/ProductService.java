@@ -9,11 +9,11 @@ public interface ProductService {
 
     ProductDTO createProduct(ProductDTO productDTO);
 
-    ProductDTO updateProduct(ProductDTO productDTO,String id);
+    ProductDTO updateProduct(ProductDTO productDTO,long id);
 
-    ProductDTO getProductById(String id);
+    ProductDTO getProductById(long id);
 
-    void deleteProduct(String id) throws ChangeSetPersister.NotFoundException;
+    void deleteProduct(long id) throws ChangeSetPersister.NotFoundException;
 
     List<ProductDTO> getProducts();
 }

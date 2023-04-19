@@ -29,26 +29,26 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public ProductDTO updateProduct(ProductDTO productDTO, String id) {
+    public ProductDTO updateProduct(ProductDTO productDTO, long id) {
         Product product = productRepository.findById(id).orElse(null);
         assert product != null;
-        product.setName(productDTO.getName());
-        product.setDescription(productDTO.getDescription());
-        product.setAmount(productDTO.getAmount());
-        product.setPrice(productDTO.getPrice());
+        product.setNombre(productDTO.getNombre());
+        product.setDescripcion(productDTO.getDescripcion());
+        product.setCantidad(productDTO.getCantidad());
+        product.setPrecio(productDTO.getPrecio());
         Product productSave = productRepository.save(product);
         return productMapper.productEntity2DTO(productSave);
     }
 
     @Override
-    public ProductDTO getProductById(String id) {
+    public ProductDTO getProductById(long id) {
         Product product = productRepository.findById(id).orElse(null);
         assert product != null;
         return productMapper.productEntity2DTO(product);
     }
 
     @Override
-    public void deleteProduct(String id) throws ChangeSetPersister.NotFoundException {
+    public void deleteProduct(long id) throws ChangeSetPersister.NotFoundException {
         Optional<Product> product = productRepository.findById(id);
         if(product.isPresent()){
             productRepository.deleteById(id);

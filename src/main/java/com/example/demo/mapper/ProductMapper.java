@@ -12,19 +12,19 @@ public class ProductMapper {
 
     public Product productDTO2Entity(ProductDTO productDTO){
         Product product = new Product();
-        product.setName(productDTO.getName());
-        product.setDescription(productDTO.getDescription());
-        product.setAmount(productDTO.getAmount());
-        product.setPrice(productDTO.getPrice());
+        product.setNombre(productDTO.getNombre());
+        product.setDescripcion(productDTO.getDescripcion());
+        product.setCantidad(productDTO.getCantidad());
+        product.setPrecio(productDTO.getPrecio());
         return product;
     }
 
     public ProductDTO productEntity2DTO(Product product){
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setName(product.getName());
-        productDTO.setDescription(product.getDescription());
-        productDTO.setAmount(product.getAmount());
-        productDTO.setPrice(product.getPrice());
+        productDTO.setNombre(product.getNombre());
+        productDTO.setDescripcion(product.getDescripcion());
+        productDTO.setCantidad(product.getCantidad());
+        productDTO.setPrecio(product.getPrecio());
         return productDTO;
     }
 

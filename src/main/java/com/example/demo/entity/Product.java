@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +14,12 @@ import org.hibernate.annotations.GenericGenerator;
 public class Product {
 
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private long id;
 
-    private String name;
-    private String Description;
-    private int amount;
-    private double price;
+    private String nombre;
+    private String Descripcion;
+    private int cantidad;
+    private double precio;
 }

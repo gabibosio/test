@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> update(@PathVariable String id,@RequestBody ProductDTO productDTO){
+    public ResponseEntity<ProductDTO> update(@PathVariable Long id,@RequestBody ProductDTO productDTO){
         try {
             ProductDTO productDTO1 = productService.updateProduct(productDTO,id);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(productDTO1);
@@ -36,7 +36,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable String id){
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id){
         try {
             ProductDTO productDTO = productService.getProductById(id);
             return ResponseEntity.status(HttpStatus.OK).body(productDTO);
@@ -46,7 +46,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable String id){
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id){
         try{
             productService.deleteProduct(id);
         } catch (ChangeSetPersister.NotFoundException e) {
@@ -58,6 +58,6 @@ public class ProductController {
     @GetMapping
     public List<ProductDTO> getProducts(){
         List<ProductDTO> productDTOS = productService.getProducts();
-        return productDTOS.stream().sorted(Comparator.comparingDouble(ProductDTO::getPrice)).collect(Collectors.toList());
+        return productDTOS.stream().sorted(Comparator.comparingDouble(ProductDTO::getPrecio)).collect(Collectors.toList());
     }
 }
